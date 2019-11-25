@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Program
+    class UserInterface
     {
-        static void Main(string[] args)
-        {
-            GameLoop newGame = new GameLoop();
-            Console.ReadLine();
-        }
     }
 }

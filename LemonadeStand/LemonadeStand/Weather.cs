@@ -24,11 +24,13 @@ namespace LemonadeStand
 
         public string PassTodaysCondition(string currentCondition)
         {
-            return "Sunny";
+            condition = "Snowy";
+            return condition;
         }
-        public int PassTodaysTemperature(int currentCondition)
+        public int PassTodaysTemperature(int currentTemperature)
         {
-            return 45;
+            temperature = 155;
+            return temperature;
         }
 
     }

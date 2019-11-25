@@ -8,5 +8,6 @@ namespace LemonadeStand
 {
     class GameLoop
     {
+        Day newDay = new Day();
     }
 }

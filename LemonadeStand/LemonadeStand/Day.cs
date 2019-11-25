@@ -13,10 +13,22 @@ namespace LemonadeStand
         public double currentCrowdDecimal;
         public int currentTemp;
         public int tempDifference;
-        public string condition;
+        public string currentCondition;
         public int idealTemp = 72;
         public int maxCrowd = 12;
+        
+        public Day()
+        {
+            Weather currentWeather = new Weather();
+            currentTemp = currentWeather.PassTodaysTemperature(45);
+            currentCondition = currentWeather.PassTodaysCondition("boof");
+            currentCrowd = DetermineCurrentCrowd(currentTemp, currentCondition, "Monday");
+            Console.WriteLine(Convert.ToString(currentCrowd)+" customers passed by");
+            Console.WriteLine(Convert.ToString(currentTemp));
+            Console.WriteLine(currentCondition);
 
+
+        }
 
 
         public int DetermineCurrentCrowd(int currentTemp, string condition, string currentDay)
