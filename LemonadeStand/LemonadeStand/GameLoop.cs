@@ -8,12 +8,31 @@ namespace LemonadeStand
 {
     class GameLoop
     {
-        Day newDay = new Day();
-
-        public int SelectRandomInt(int minimum, int maximum)
+        public List<string> actualConditionsGame = new List<string>();
+        public List<string> forecastConditionsGame = new List<string>();
+        public List<int> actualTemperatureListGame = new List<int>();
+        public List<int> forecastTemperatureListGame = new List<int>();
+        public GameLoop()
         {
-            Random rng = new Random();
-            return rng.Next(minimum, maximum);
+            CreateWeekWeather();
+            Day newDay = new Day();
+            checkIf();
+        }
+        void checkIf()
+        {
+            for (int i = 0; i < 7; i++)
+            {
+                Console.WriteLine("Day " + Convert.ToString(i + 1) + " " + actualConditionsGame[i] + " " + forecastConditionsGame[i] + " " + actualTemperatureListGame[i] + " " + forecastTemperatureListGame[i]);
+            }
+        }
+        public void CreateWeekWeather()
+        {
+            Weather initialWeather = new Weather();
+            initialWeather.GenerateWeather();
+            actualConditionsGame = initialWeather.actualConditions;
+            forecastConditionsGame = initialWeather.forecastConditions;
+            actualTemperatureListGame = initialWeather.actualTemperatureList;
+            forecastTemperatureListGame = initialWeather.forecastTemperatureList;
         }
     }
 }
