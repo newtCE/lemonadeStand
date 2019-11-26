@@ -9,5 +9,11 @@ namespace LemonadeStand
     class GameLoop
     {
         Day newDay = new Day();
+
+        public int SelectRandomInt(int minimum, int maximum)
+        {
+            Random rng = new Random();
+            return rng.Next(minimum, maximum);
+        }
     }
 }
