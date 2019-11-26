@@ -16,7 +16,8 @@ namespace LemonadeStand
         public string currentCondition;
         public int idealTemp = 72;
         public int maxCrowd = 12;
-        
+        public List<int> currentRecipe = new List<int>();
+
         public Day()
         {
             Weather currentWeather = new Weather();

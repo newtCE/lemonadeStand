@@ -8,9 +8,8 @@ namespace LemonadeStand
 {
     abstract class RandomValueUser
     {
-        public int SelectRandomInt(int minimum, int maximum)
+        public int SelectRandomInt(Random rng,int minimum, int maximum)
         {
-            Random rng = new Random();
             return rng.Next(minimum, maximum);
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LemonadeStand
 {
-    class Weather:RandomValueUser
+    class Weather
     {
         public string condition;
         public int temperature;
@@ -23,11 +23,14 @@ namespace LemonadeStand
         }
         public void GenerateWeather()
         {
+            //Random rng = new Random(i);
             for (int i = 0; i < 7; i++)
             {
-                int temperatureSelected = SelectRandomInt(38, 104);
+                Random rng = new Random(i);
+                int temperatureSelected = rng.Next(38, 104);
+                rng.Next(,);
                 actualTemperatureList.Add(temperatureSelected);
-                forecastTemperatureList.Add(temperatureSelected + SelectRandomInt(-16, 16));
+                forecastTemperatureList.Add(temperatureSelected + rng.Next(-16, 16));
                 int conditionRangeHi = 4;
                 if (temperatureSelected > 45)
                     {
@@ -37,9 +40,9 @@ namespace LemonadeStand
                     {
                         conditionRangeHi = 2;
                     }
-                int conditionSelected=SelectRandomInt(0,conditionRangeHi);
+                int conditionSelected=rng.Next(0,conditionRangeHi);
                 actualConditions.Add(conditionList[conditionSelected]);
-                int forecastAccuracy = SelectRandomInt(-1, 1)+conditionSelected;
+                int forecastAccuracy = rng.Next(-1, 1)+conditionSelected;
                 if (forecastAccuracy < 0)
                     {
                         forecastAccuracy = 0;
