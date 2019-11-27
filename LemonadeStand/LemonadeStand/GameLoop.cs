@@ -12,20 +12,29 @@ namespace LemonadeStand
         public List<string> forecastConditionsGame = new List<string>();
         public List<int> actualTemperatureListGame = new List<int>();
         public List<int> forecastTemperatureListGame = new List<int>();
+        public List<int> currentRecipe = new List<int>() {4,4,4};
         public int currentDayNumber;
+        public double currentSales;
+        public double currentPrice;
+        public int currentCrowd;
+
         public GameLoop()
         {
             currentDayNumber = 0;
             CreateWeekWeather();
-            Day newDay = new Day(currentDayNumber,actualTemperatureListGame[currentDayNumber],actualConditionsGame[currentDayNumber]);
+            currentPrice = 1.55;
+            while (currentDayNumber<7) {
+            Day newDay = new Day(currentDayNumber, actualTemperatureListGame[currentDayNumber], actualConditionsGame[currentDayNumber],currentRecipe,currentPrice);
+                currentSales = newDay.salesToday;
+                currentCrowd = newDay.currentCrowd;
             checkIf();
+            currentDayNumber += 1;
+            }
+            
         }
         void checkIf()
         {
-            for (int i = 0; i < 7; i++)
-            {
-                Console.WriteLine("Day " + Convert.ToString(i + 1) + " " + actualConditionsGame[i] + " " + forecastConditionsGame[i] + " " + actualTemperatureListGame[i] + " " + forecastTemperatureListGame[i]);
-            }
+                Console.WriteLine("Day " + Convert.ToString(currentDayNumber+1) + " Weather " + actualConditionsGame[currentDayNumber] + " Forecast " + forecastConditionsGame[currentDayNumber] + " " + actualTemperatureListGame[currentDayNumber] + " " + forecastTemperatureListGame[currentDayNumber]+"\n Crowd: "+Convert.ToString(currentCrowd)+"\nSales: "+Convert.ToString(currentSales));
         }
         public void CreateWeekWeather()
         {

@@ -21,17 +21,15 @@ namespace LemonadeStand
         public List<int> currentRecipe = new List<int>();
         public List<string> dayList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
-        public Day(int currentDayNumber,int todayTemp,string todayCondition)
+        public Day(int currentDayNumber,int todayTemp,string todayCondition,List<int>currentRecipe,double currentPrice)
         {
-            currentTemp = todayTemp;
-            currentCondition = todayCondition;
-            currentDay = dayList[currentDayNumber];
+            this.currentTemp = todayTemp;
+            this.currentCondition = todayCondition;
+            this.currentDay = dayList[currentDayNumber];
+            this.currentRecipe = currentRecipe;
+            this.currentPrice = currentPrice;
             currentCrowd = DetermineCurrentCrowd(currentTemp, currentCondition,currentDay);
-            Console.WriteLine(Convert.ToString(currentCrowd)+" customers passed by");
-            Console.WriteLine(Convert.ToString(currentTemp));
-            Console.WriteLine(currentCondition);
-
-
+            SendCustomersThrough(currentCrowd);
         }
 
         public void SendCustomersThrough(int currentCrowd)
