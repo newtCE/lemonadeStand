@@ -16,14 +16,17 @@ namespace LemonadeStand
         public string currentCondition;
         public int idealTemp = 72;
         public int maxCrowd = 12;
+        public double currentPrice;
+        public double salesToday;
         public List<int> currentRecipe = new List<int>();
+        public List<string> dayList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
-        public Day()
+        public Day(int currentDayNumber,int todayTemp,string todayCondition)
         {
-            Weather currentWeather = new Weather();
-            currentTemp = currentWeather.PassTodaysTemperature(45);
-            currentCondition = currentWeather.PassTodaysCondition("boof");
-            currentCrowd = DetermineCurrentCrowd(currentTemp, currentCondition, "Monday");
+            currentTemp = todayTemp;
+            currentCondition = todayCondition;
+            currentDay = dayList[currentDayNumber];
+            currentCrowd = DetermineCurrentCrowd(currentTemp, currentCondition,currentDay);
             Console.WriteLine(Convert.ToString(currentCrowd)+" customers passed by");
             Console.WriteLine(Convert.ToString(currentTemp));
             Console.WriteLine(currentCondition);
@@ -31,7 +34,15 @@ namespace LemonadeStand
 
         }
 
-
+        public void SendCustomersThrough(int currentCrowd)
+        {
+            Random seed = new Random();
+            for (int i = 0; i < currentCrowd; i++)
+            {
+                Customer currentCustomer = new Customer(currentTemp,currentRecipe,currentPrice);
+                salesToday += currentCustomer.amountPaid;
+            }
+        }
         public int DetermineCurrentCrowd(int currentTemp, string condition, string currentDay)
         {
             currentCrowd = maxCrowd;

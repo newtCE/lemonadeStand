@@ -12,10 +12,12 @@ namespace LemonadeStand
         public List<string> forecastConditionsGame = new List<string>();
         public List<int> actualTemperatureListGame = new List<int>();
         public List<int> forecastTemperatureListGame = new List<int>();
+        public int currentDayNumber;
         public GameLoop()
         {
+            currentDayNumber = 0;
             CreateWeekWeather();
-            Day newDay = new Day();
+            Day newDay = new Day(currentDayNumber,actualTemperatureListGame[currentDayNumber],actualConditionsGame[currentDayNumber]);
             checkIf();
         }
         void checkIf()

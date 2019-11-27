@@ -10,7 +10,7 @@ namespace LemonadeStand
     {
         public string condition;
         public int temperature;
-        public List<string> dayList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+        
         public List<string> conditionList = new List<string>() {"Sunny","Cloudy","Rainy", "Stormy", "Snowy"};
         public List<string> actualConditions = new List<string>();
         public List<string> forecastConditions = new List<string>();
@@ -28,7 +28,7 @@ namespace LemonadeStand
             {
                 Random rng = new Random(i);
                 int temperatureSelected = rng.Next(38, 104);
-                rng.Next(,);
+                rng.Next(i);
                 actualTemperatureList.Add(temperatureSelected);
                 forecastTemperatureList.Add(temperatureSelected + rng.Next(-16, 16));
                 int conditionRangeHi = 4;
@@ -59,17 +59,6 @@ namespace LemonadeStand
         public string GenerateCondition(int inputNumber)
         {
             return conditionList[inputNumber];
-        }
-
-        public string PassTodaysCondition(string currentCondition)
-        {
-            condition = "Snowy";
-            return condition;
-        }
-        public int PassTodaysTemperature(int currentTemperature)
-        {
-            temperature = 155;
-            return temperature;
         }
 
     }
