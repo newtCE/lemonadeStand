@@ -22,7 +22,7 @@ namespace LemonadeStand
         {
             currentDayNumber = 0;
             CreateWeekWeather();
-            currentPrice = 1.55;
+            currentPrice = 0.55;
             while (currentDayNumber<7) {
             Day newDay = new Day(currentDayNumber, actualTemperatureListGame[currentDayNumber], actualConditionsGame[currentDayNumber],currentRecipe,currentPrice);
                 currentSales = newDay.salesToday;

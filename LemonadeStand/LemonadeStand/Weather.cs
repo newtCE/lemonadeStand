@@ -7,10 +7,7 @@ using System.Threading.Tasks;
 namespace LemonadeStand
 {
     class Weather
-    {
-        public string condition;
-        public int temperature;
-        
+    {   
         public List<string> conditionList = new List<string>() {"Sunny","Cloudy","Rainy", "Stormy", "Snowy"};
         public List<string> actualConditions = new List<string>();
         public List<string> forecastConditions = new List<string>();
@@ -19,7 +16,6 @@ namespace LemonadeStand
 
         public Weather()
         {
-
         }
         public void GenerateWeather()
         {

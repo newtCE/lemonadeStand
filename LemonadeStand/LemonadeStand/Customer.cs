@@ -19,9 +19,12 @@ namespace LemonadeStand
         Random seed = new Random();
         List<int> currentRecipe = new List<int>();
 
-        public Customer(int currentTemp,List<int> currentRecipe,double currentPrice)
+        public Customer(int currentTemp,List<int>currentRecipe,double currentPrice)
         {
-            budgetLevel = 2 - .01 * (seed.Next(0, 125));
+            this.currentTemp = currentTemp;
+            this.currentRecipe = currentRecipe;
+            this.currentPrice = currentPrice;
+            budgetLevel = 3 - .01 * (seed.Next(0, 150));
             SetLemonLevel();
             SetSugarLevel();
             SetIceLevel();
@@ -30,11 +33,11 @@ namespace LemonadeStand
         }
         void SetLemonLevel()
         {
-            lemonLevel = seed.Next(1, 13);
+            lemonLevel = seed.Next(1, 10);
         }
         void SetSugarLevel()
         {
-            sugarLevel = seed.Next(3, 13);
+            sugarLevel = seed.Next(3, 11);
         }
         void SetIceLevel()
         {
@@ -54,15 +57,15 @@ namespace LemonadeStand
         }
         void JudgeProduct()
         {
-            if (currentRecipe[0] == sugarLevel || currentRecipe[0] == sugarLevel - 1 || currentRecipe[0] == sugarLevel - 2)
+            if (currentRecipe[0] > (sugarLevel - 2) && currentRecipe[0] < (sugarLevel + 2))
             {
                 choiceCalculus += .33;
             }
-            if (currentRecipe[1] == lemonLevel || currentRecipe[1] == lemonLevel - 1 || currentRecipe[1] == lemonLevel - 2)
+            if (currentRecipe[1] > (lemonLevel - 2) && currentRecipe[1] < (lemonLevel + 2))
             {
                 choiceCalculus += .33;
             }
-            if (currentRecipe[2] == iceLevel || currentRecipe[2] == iceLevel - 1 || currentRecipe[2] == iceLevel - 2)
+            if (currentRecipe[2] > (iceLevel-2) && currentRecipe[2] < (iceLevel +2))
             {
                 choiceCalculus += .33;
             }
