@@ -69,13 +69,31 @@ namespace LemonadeStand
                     {
                         countChosen = true;
                     }
+                    else
+                    {
+                        Console.WriteLine("Not enough of this ingredient is available for this recipe...");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Not a valid input, please input only whole numbers..."); ;
+                    Console.WriteLine("Not a valid input, please input only whole numbers...");
                 }
             }
             return ingredientCount;
+        }
+        public int PitcherPrompt(List<int> currentInventory,List<int>currentRecipe,int maxPitchers)
+        {
+            int pitcherCount = 0;
+            while (pitcherCount == 0)
+            {
+                Console.WriteLine("A pitcher of lemonade will provide enough lemonade for 10 cups.");
+                Console.WriteLine("Your inventory allows you to make " + maxPitchers + " of your current recipe.\nHow many pitchers will you make for today?");
+            }
+            return pitcherCount;
+        }
+        public double PricePrompt()
+        {
+            return 2;
         }
     }
 }
