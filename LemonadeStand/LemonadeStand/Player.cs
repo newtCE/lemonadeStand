@@ -12,8 +12,8 @@ namespace LemonadeStand
         public List<int> currentRecipe = new List<int>() { 4, 4, 4 };
         public List<int> currentInventory = new List<int>() { 4, 4, 4 };
         public double currentFunds = 15;
-        int pitcherCount = 0;
-        double currentPrice;
+        public int pitcherCount = 0;
+        public double currentPrice;
 
         public void BuyIngredient(string ingredientType, double currentFunds, List<int> currentInventory)
         {

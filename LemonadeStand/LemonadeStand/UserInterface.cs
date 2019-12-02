@@ -84,16 +84,56 @@ namespace LemonadeStand
         public int PitcherPrompt(List<int> currentInventory,List<int>currentRecipe,int maxPitchers)
         {
             int pitcherCount = 0;
-            while (pitcherCount == 0)
+            string inputToCheck;
+            while (pitcherCount <1)
             {
                 Console.WriteLine("A pitcher of lemonade will provide enough lemonade for 10 cups.");
                 Console.WriteLine("Your inventory allows you to make " + maxPitchers + " of your current recipe.\nHow many pitchers will you make for today?");
+                inputToCheck = Console.ReadLine();
+                if (Int32.TryParse(inputToCheck, out pitcherCount))
+                {
+                    if (pitcherCount <= maxPitchers && pitcherCount>0)
+                    {
+                        //we are good
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not enough ingredients available for that many pitchers...");
+                        pitcherCount = 0;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid input, please input only whole numbers greater than 0...");
+                }
             }
             return pitcherCount;
         }
         public double PricePrompt()
         {
-            return 2;
+            string inputToCheck;
+            double determinedCost = 0;
+            while (determinedCost <= 0)
+            {
+                Console.WriteLine("How much will you charge for a cup of lemonade?");
+                inputToCheck = Console.ReadLine();
+                if (double.TryParse(inputToCheck, out determinedCost))
+                {
+                    if (determinedCost>0)
+                    {
+                        //all good
+                    }
+                    else
+                    {
+                        Console.WriteLine("Cannot cost $0.00 or less...");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Not a valid input, positive number value above 0.00...");
+                }
+            }
+            return determinedCost;
         }
     }
 }

@@ -23,12 +23,16 @@ namespace LemonadeStand
             currentDayNumber = 0;
             CreateWeekWeather();
             Player currentPlayer = new Player();
-            currentPlayer.BuyIngredient("Lemons", currentPlayer.currentFunds, currentPlayer.currentInventory);
-            currentPlayer.BuyIngredient("Sugar Cubes", currentPlayer.currentFunds, currentPlayer.currentInventory);
-            currentPlayer.BuyIngredient("Ice Cubes", currentPlayer.currentFunds, currentPlayer.currentInventory);
+
             currentPrice = 0.55;
             while (currentDayNumber<7) {
-            Day newDay = new Day(currentDayNumber, actualTemperatureListGame[currentDayNumber], actualConditionsGame[currentDayNumber],currentRecipe,currentPrice);
+                currentPlayer.BuyIngredient("Lemons", currentPlayer.currentFunds, currentPlayer.currentInventory);
+                currentPlayer.BuyIngredient("Sugar Cubes", currentPlayer.currentFunds, currentPlayer.currentInventory);
+                currentPlayer.BuyIngredient("Ice Cubes", currentPlayer.currentFunds, currentPlayer.currentInventory);
+                currentPlayer.SetRecipe();
+                currentPlayer.SetPitcherCount(currentPlayer.currentInventory, currentPlayer.currentRecipe);
+                currentPlayer.SetPrice();
+                Day newDay = new Day(currentDayNumber, actualTemperatureListGame[currentDayNumber], actualConditionsGame[currentDayNumber],currentPlayer.currentRecipe,currentPlayer.currentPrice);
                 currentSales = newDay.salesToday;
                 currentCrowd = newDay.currentCrowd;
             checkIf();
