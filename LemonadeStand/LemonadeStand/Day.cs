@@ -15,7 +15,7 @@ namespace LemonadeStand
         public int tempDifference;
         public string currentCondition;
         public int idealTemp = 72;
-        public int maxCrowd = 12;
+        public int maxCrowd = 24;
         public double currentPrice;
         public double salesToday;
         public List<int> currentRecipe = new List<int>();
@@ -58,16 +58,16 @@ namespace LemonadeStand
             switch (currentDay)
             {
                 case "Tuesday":
-                    currentCrowd = currentCrowd + 2;
+                    currentCrowd = currentCrowd + 4;
                     break;
 
                 case "Friday":
-                    currentCrowd = currentCrowd + 3;
+                    currentCrowd = currentCrowd + 6;
                     break;
 
                 case "Saturday":
                 case "Sunday":
-                    currentCrowd = currentCrowd + 4;
+                    currentCrowd = currentCrowd + 8;
                     break;
             }
             return currentCrowd;

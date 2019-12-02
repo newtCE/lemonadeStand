@@ -44,15 +44,15 @@ namespace LemonadeStand
             iceLevel = 1;
             if (currentTemp > 45)
             {
-                iceLevel = 3;
+                iceLevel = 2;
             }
             if (currentTemp > 60)
             {
-                iceLevel = 6;
+                iceLevel = 4;
             }
             if (currentTemp > 85)
             {
-                iceLevel = 9;
+                iceLevel = 8;
             }
         }
         void JudgeProduct()
