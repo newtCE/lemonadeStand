@@ -16,6 +16,8 @@ namespace LemonadeStand
         public int currentDayNumber;
         public double currentSales;
         public double currentPrice;
+        public double allSales;
+        public double profits;
         public int currentCrowd;
 
         public GameLoop()
@@ -23,22 +25,32 @@ namespace LemonadeStand
             currentDayNumber = 0;
             CreateWeekWeather();
             Player currentPlayer = new Player();
-
-            currentPrice = 0.55;
             while (currentDayNumber<7) {
+                UserInterface forecastPrompt = new UserInterface();
+                forecastPrompt.ForecastToday(forecastTemperatureListGame[currentDayNumber], forecastConditionsGame[currentDayNumber],currentDayNumber);
+                currentPlayer.dailyExpenditure = 0;
                 currentPlayer.BuyIngredient("Lemons", currentPlayer.currentFunds, currentPlayer.currentInventory);
                 currentPlayer.BuyIngredient("Sugar Cubes", currentPlayer.currentFunds, currentPlayer.currentInventory);
                 currentPlayer.BuyIngredient("Ice Cubes", currentPlayer.currentFunds, currentPlayer.currentInventory);
                 currentPlayer.SetRecipe();
                 currentPlayer.SetPitcherCount(currentPlayer.currentInventory, currentPlayer.currentRecipe);
                 currentPlayer.SetPrice();
+                double dailyExpenditure = currentPlayer.dailyExpenditure;
                 Day newDay = new Day(currentDayNumber, actualTemperatureListGame[currentDayNumber], actualConditionsGame[currentDayNumber],currentPlayer.currentRecipe,currentPlayer.currentPrice,currentPlayer.pitcherCount);
                 currentSales = newDay.salesToday;
+                allSales += currentSales;
+                currentPlayer.currentFunds += currentSales;
                 currentCrowd = newDay.currentCrowd;
-            checkIf();
-            currentDayNumber += 1;
+                UserInterface dayResultPrompt = new UserInterface();
+                dayResultPrompt.resultsToday(actualTemperatureListGame[currentDayNumber], actualConditionsGame[currentDayNumber], currentCrowd,currentSales,dailyExpenditure);
+                currentDayNumber += 1;
+                if (currentDayNumber > 6)
+                {
+                    profits = currentPlayer.currentFunds;
+                }
             }
-            
+            UserInterface weekResultPrompt = new UserInterface();
+            weekResultPrompt.resultsWeek(allSales, profits);
         }
         void checkIf()
         {

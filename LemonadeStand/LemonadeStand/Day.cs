@@ -15,7 +15,7 @@ namespace LemonadeStand
         public int tempDifference;
         public string currentCondition;
         public int idealTemp = 72;
-        public int maxCrowd = 24;
+        public int maxCrowd = 32;
         public double currentPrice;
         public double salesToday;
         public int cupsAvailable;

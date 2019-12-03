@@ -14,6 +14,7 @@ namespace LemonadeStand
         public double currentFunds = 15;
         public int pitcherCount = 0;
         public double currentPrice;
+        public double dailyExpenditure;
 
         public void BuyIngredient(string ingredientType, double currentFunds, List<int> currentInventory)
         {
@@ -44,6 +45,7 @@ namespace LemonadeStand
                 {
                     this.currentInventory[ingredientIndex] = currentInventory[ingredientIndex]+purchasedAmount;
                     this.currentFunds = currentFunds - (purchasedAmount * ingredientCost);
+                    this.dailyExpenditure += purchasedAmount * ingredientCost;
                     purchasedIngredient = true;
                 }
                 else

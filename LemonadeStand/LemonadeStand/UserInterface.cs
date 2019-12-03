@@ -140,5 +140,55 @@ namespace LemonadeStand
             Console.WriteLine("Customers have purchased all available lemonade! Time to close up shop for today!");
 
         }
+        public void ForecastToday(int forecastTemp, string forecastCondition,int dayNumber)
+        {
+            string dayName = "Monday";
+            switch (dayNumber)
+            {
+                case 0:
+                    dayName = "Monday";
+                break;
+                case 1:
+                    dayName = "Tuesday";
+                    break;
+                case 2:
+                    dayName = "Wednesday";
+                    break;
+                case 3:
+                    dayName = "Thursday";
+                    break;
+                case 4:
+                    dayName = "Friday";
+                    break;
+                case 5:
+                    dayName = "Saturday";
+                    break;
+                case 6:
+                    dayName = "Sunday";
+                    break;
+            }
+            Console.WriteLine("Day " + (dayNumber + 1) + ": " + dayName);
+            Console.WriteLine("Today is expected to be " + forecastCondition + " and " + forecastTemp + " degrees. Let's consider that when thinking about our recipe and how much to make...");
+            Console.ReadLine();
+        }
+        public void resultsToday(int actualTemp, string actualCondition, int crowdSize, double sales, double dailyExpenditure)
+        {
+            Console.WriteLine("Today it was " + actualCondition + " and " + actualTemp + " degrees");
+            Console.WriteLine(crowdSize+" people passed by the lemonade stand which resulted in a total of $"+sales+" in sales.");
+            if (sales - dailyExpenditure > 0)
+            {
+                Console.WriteLine("Today's expenditure was $" + dailyExpenditure + " resulting in a daily profit of $" + (sales - dailyExpenditure));
+            }
+            else
+            {
+                Console.WriteLine("Today's expenditure was $" + dailyExpenditure + " resulting in a loss of $" + (Math.Abs(sales - dailyExpenditure)));
+            }
+            Console.ReadLine();
+        }
+        public void resultsWeek(double totalSales, double currentCash)
+        {
+            Console.WriteLine("After a week of business you made $"+totalSales+" in sales with a 7 day profit of $"+currentCash+"\nThanks for playing!");
+            Console.ReadLine();
+        }
     }
 }
