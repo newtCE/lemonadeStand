@@ -18,16 +18,18 @@ namespace LemonadeStand
         public int maxCrowd = 24;
         public double currentPrice;
         public double salesToday;
+        public int cupsAvailable;
         public List<int> currentRecipe = new List<int>();
         public List<string> dayList = new List<string>() { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
 
-        public Day(int currentDayNumber,int todayTemp,string todayCondition,List<int>currentRecipe,double currentPrice)
+        public Day(int currentDayNumber,int todayTemp,string todayCondition,List<int>currentRecipe,double currentPrice,int pitcherCount)
         {
             this.currentTemp = todayTemp;
             this.currentCondition = todayCondition;
             this.currentDay = dayList[currentDayNumber];
             this.currentRecipe = currentRecipe;
             this.currentPrice = currentPrice;
+            this.cupsAvailable = pitcherCount * 10;
             currentCrowd = DetermineCurrentCrowd(currentTemp, currentCondition,currentDay);
             SendCustomersThrough(currentCrowd);
         }
@@ -37,8 +39,17 @@ namespace LemonadeStand
             Random seed = new Random();
             for (int i = 0; i < currentCrowd; i++)
             {
-                Customer currentCustomer = new Customer(currentTemp,currentRecipe,currentPrice);
-                salesToday += currentCustomer.amountPaid;
+                Customer currentCustomer = new Customer(currentTemp, currentRecipe, currentPrice);
+                if (currentCustomer.amountPaid > 0 && cupsAvailable > 0) //customer was willing to buy, did we have enough supply
+                {
+                    salesToday += currentCustomer.amountPaid; //we had enough, get the money and decrease supply
+                    cupsAvailable = cupsAvailable - 1;
+                }
+                if (cupsAvailable < 1){ //check if we can stay open
+                    UserInterface closeUI = new UserInterface();
+                    closeUI.SoldOutMessage();
+                    return; //no lemonade left, close shop
+                }
             }
         }
         public int DetermineCurrentCrowd(int currentTemp, string condition, string currentDay)

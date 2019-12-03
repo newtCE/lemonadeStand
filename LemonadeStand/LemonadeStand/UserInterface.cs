@@ -65,7 +65,7 @@ namespace LemonadeStand
                 inputToCheck = Console.ReadLine();
                 if (Int32.TryParse(inputToCheck, out ingredientCount))
                 {
-                    if (ingredientCount < currentInventory[ingredientIndex])
+                    if (ingredientCount <= currentInventory[ingredientIndex])
                     {
                         countChosen = true;
                     }
@@ -134,6 +134,11 @@ namespace LemonadeStand
                 }
             }
             return determinedCost;
+        }
+        public void SoldOutMessage()
+        {
+            Console.WriteLine("Customers have purchased all available lemonade! Time to close up shop for today!");
+
         }
     }
 }

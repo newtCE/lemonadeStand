@@ -32,7 +32,7 @@ namespace LemonadeStand
                 currentPlayer.SetRecipe();
                 currentPlayer.SetPitcherCount(currentPlayer.currentInventory, currentPlayer.currentRecipe);
                 currentPlayer.SetPrice();
-                Day newDay = new Day(currentDayNumber, actualTemperatureListGame[currentDayNumber], actualConditionsGame[currentDayNumber],currentPlayer.currentRecipe,currentPlayer.currentPrice);
+                Day newDay = new Day(currentDayNumber, actualTemperatureListGame[currentDayNumber], actualConditionsGame[currentDayNumber],currentPlayer.currentRecipe,currentPlayer.currentPrice,currentPlayer.pitcherCount);
                 currentSales = newDay.salesToday;
                 currentCrowd = newDay.currentCrowd;
             checkIf();
