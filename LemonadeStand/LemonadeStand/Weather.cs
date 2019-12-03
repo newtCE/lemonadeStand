@@ -19,10 +19,10 @@ namespace LemonadeStand
         }
         public void GenerateWeather()
         {
-            //Random rng = new Random(i);
+            Random rng = new Random();
             for (int i = 0; i < 7; i++)
             {
-                Random rng = new Random(i);
+                //Random rng = new Random(i); //this is an overload for deterministic rng
                 int temperatureSelected = rng.Next(38, 104);
                 rng.Next(i);
                 actualTemperatureList.Add(temperatureSelected);

@@ -24,7 +24,7 @@ namespace LemonadeStand
             this.currentTemp = currentTemp;
             this.currentRecipe = currentRecipe;
             this.currentPrice = currentPrice;
-            budgetLevel = 3 - .01 * (seed.Next(0, 150));
+            budgetLevel = 3 - .01 * (seed.Next(0, 75));
             SetLemonLevel();
             SetSugarLevel();
             SetIceLevel();
@@ -57,15 +57,15 @@ namespace LemonadeStand
         }
         void JudgeProduct()
         {
-            if (currentRecipe[0] > (sugarLevel - 2) && currentRecipe[0] < (sugarLevel + 2))
+            if (currentRecipe[0] > (sugarLevel - 3) && currentRecipe[0] < (sugarLevel + 3))
             {
                 choiceCalculus += .33;
             }
-            if (currentRecipe[1] > (lemonLevel - 2) && currentRecipe[1] < (lemonLevel + 2))
+            if (currentRecipe[1] > (lemonLevel - 3) && currentRecipe[1] < (lemonLevel + 3))
             {
                 choiceCalculus += .33;
             }
-            if (currentRecipe[2] > (iceLevel-2) && currentRecipe[2] < (iceLevel +2))
+            if (currentRecipe[2] > (iceLevel-3) && currentRecipe[2] < (iceLevel +3))
             {
                 choiceCalculus += .33;
             }
