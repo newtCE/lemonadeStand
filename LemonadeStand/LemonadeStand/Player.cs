@@ -9,8 +9,8 @@ namespace LemonadeStand
     class Player
     {
 
-        public List<int> currentRecipe = new List<int>() { 4, 4, 4 };
-        public List<int> currentInventory = new List<int>() { 4, 4, 4 };
+        public List<int> currentRecipe = new List<int>() { 999, 999, 999 };
+        public List<int> currentInventory = new List<int>() { 0, 0, 0 };
         public double currentFunds = 15;
         public int pitcherCount = 0;
         public double currentPrice;
@@ -42,7 +42,7 @@ namespace LemonadeStand
                 purchasedAmount=purchaseUI.PurchaseIngredientPrompt(currentFunds,ingredientType, ingredientCost, currentInventory, ingredientIndex);
                 if (currentFunds > (purchasedAmount * ingredientCost))
                 {
-                    this.currentInventory[ingredientIndex] += purchasedAmount;
+                    this.currentInventory[ingredientIndex] = currentInventory[ingredientIndex]+purchasedAmount;
                     this.currentFunds = currentFunds - (purchasedAmount * ingredientCost);
                     purchasedIngredient = true;
                 }
@@ -62,9 +62,9 @@ namespace LemonadeStand
             lemonAmount=recipeUI.RecipePrompt(currentInventory, "Lemons");
             sugarAmount=recipeUI.RecipePrompt(currentInventory, "Sugar Cubes");
             iceAmount=recipeUI.RecipePrompt(currentInventory, "Ice Cubes");
-            this.currentRecipe[0] +=lemonAmount;
-            this.currentRecipe[1] += sugarAmount;
-            this.currentRecipe[2] += iceAmount;
+            this.currentRecipe[0] =lemonAmount;
+            this.currentRecipe[1] = sugarAmount;
+            this.currentRecipe[2] = iceAmount;
         }
         public void SetPitcherCount(List<int>currentInventory,List<int>currentRecipe)
         {
