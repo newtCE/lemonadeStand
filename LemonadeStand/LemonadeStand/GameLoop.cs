@@ -19,7 +19,6 @@ namespace LemonadeStand
         public double allSales;
         public double profits;
         public int currentCrowd;
-
         public GameLoop()
         {
             currentDayNumber = 0;

@@ -31,6 +31,9 @@ namespace LemonadeStand
             JudgeProduct();
 
         }
+        //the functions below in conjunction with the construction of the customer class are good examples of the open closed
+        //principle as the methods for determining behavior can easilly be added to to increase functionality and meet new 
+        //requirements without having to augment existing steps
         void SetLemonLevel()
         {
             lemonLevel = seed.Next(1, 10);

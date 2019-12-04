@@ -33,7 +33,7 @@ namespace LemonadeStand
             currentCrowd = DetermineCurrentCrowd(currentTemp, currentCondition,currentDay);
             SendCustomersThrough(currentCrowd);
         }
-
+        //Methods/functions below provide examples of single responsibility principle:
         public void SendCustomersThrough(int currentCrowd)
         {
             Random seed = new Random();
